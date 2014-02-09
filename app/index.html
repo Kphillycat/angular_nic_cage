@@ -2,7 +2,6 @@
 <html ng-app="nicCageApp">
 	<head>
 		<link href="css/styles.css" rel="stylesheet" />
-		<link href="css/bootstrap.min.css" rel="stylesheet"/>
 		<title>The Best Nic Cage App</title>
 		<script src="lib/angular/angular.min.js"></script>
     <script src="js/controllers.js"></script>
@@ -10,8 +9,13 @@
 	<body ng-controller="NicListCtrl">
 		<p>Ya'll ready for some cage?!!</p>
 		<div class="no_class_can_contain_nic">
+			<input type="text" class="search" ng-model="query">
+			<select ng-model="orderProp">
+				<option value="name">Name</option>
+				<option value="phrase">Phrase</option>
+			</select>
 			<ul>
-				<li ng-repeat="nic in nics">
+				<li ng-repeat="nic in nics | filter:query">
 					<h3>{{nic.name}}</h3>
 					<img ng-src={{nic.img}} />
 					<p>"{{nic.phrase}}"</p>

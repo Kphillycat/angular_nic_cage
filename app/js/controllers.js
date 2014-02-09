@@ -1,17 +1,8 @@
-var data  =
-[{name: "Antoine Cage", phrase: "Hide yo eyes, cuz I'm making movies", img: "http://24.media.tumblr.com/tumblr_lshryi7OSZ1qael5so1_400.jpg"}, {name: "Princess Cage", phrase: "I just want to be beautiful", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWSdR957PZ0jVANvTi3UJM3nZTY2VXw2PzQgIKlwmxAyEvD2pwwA", name: "Poke-cage", phrase: "Not the ballz", img: "http://www.digitaltrends.com/wp-content/uploads/2013/03/Pokemon-x-Nic-Cage.jpg"}]
-
 var nicCageApp = angular.module('nicCageApp', []);
 
-nicCageApp.controller('NicListCtrl', function($scope){
-	$scope.nics = [
-								{"name": "Antoine Cage", 
-								"phrase": "Hide yo eyes, cuz I'm making movies", 
-								"img": "http://24.media.tumblr.com/tumblr_lshryi7OSZ1qael5so1_400.jpg"}, 
-								{"name": "Princess Cage",
-								 "phrase": "I just want to be beautiful", 
-								 "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWSdR957PZ0jVANvTi3UJM3nZTY2VXw2PzQgIKlwmxAyEvD2pwwA"},
-								  {"name": "Poke-cage", 
-								  "phrase": "Not the ballz", 
-								  "img": "http://www.digitaltrends.com/wp-content/uploads/2013/03/Pokemon-x-Nic-Cage.jpg"}]
+nicCageApp.controller('NicListCtrl', function($scope, $http){
+	$http.get('nics/nics.json').success(function(data){
+		$scope.nics = data;
+	});
+	$scope.orderProp = 'name'; //Give orderProp default
 });
